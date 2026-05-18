@@ -15,6 +15,6 @@ public class DemoApplication {
 
     @GetMapping("/")
     public String hello() {
-        return "Hello, Jenkins+Harbor CI/CD!";
+        return "Hello, Auto Trigger CI/CD!";
     }
 }
