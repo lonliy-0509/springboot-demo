@@ -57,8 +57,8 @@ pipeline {
                     keyFileVariable: 'SSH_KEY'
                 )]) {
                     sh """
-                        ssh -i \${SSH_KEY} root@${WEB_HOST} "bash ${WEB_SCRIPT_PATH} ${IMAGE_TAG}"
-                    """
+                        ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i \${SSH_KEY} root@${WEB_HOST} "bash ${WEB_SCRIPT_PATH} ${IMAGE_TAG}"
+		    """
                 }
                 echo "生产环境部署完成"
             }
