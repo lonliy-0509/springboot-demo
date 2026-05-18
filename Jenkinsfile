@@ -16,6 +16,8 @@ pipeline {
         IMAGE_TAG = "${BUILD_NUMBER}"
         // Jenkins系统中存放Harbor账号密码的【凭证ID】，和后台创建的ID必须一致
         HARBOR_CREDENTIALS = "harbor"
+	// Jenkins 系统中存放SSH 私钥的【凭证ID】，和后台创建的ID必须一致
+	SSH_CREDENTIALS = "server-ssh"
     }
 
     // ========== 流水线执行阶段（从上到下顺序执行，失败直接终止） ==========
@@ -28,8 +30,8 @@ pipeline {
                 echo "拉取源码"
                 // 连接Git仓库，拉取main分支所有代码
                 // 自动拉取：源码、pom.xml、Dockerfile、配置文件全部拉到Jenkins工作目录
-                git url: "https://github.com/lonliy-0509/springboot-demo.git", branch: "main"
-            }
+           	git url: "git@github.com:lonliy-0509/springboot-demo.git", branch: "main",credentialsId: "${SSH_CREDENTIALS}"
+	    }
         }
 
         // 阶段2：构建Docker镜像（核心阶段，编译打包全在这里完成）
