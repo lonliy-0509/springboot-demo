@@ -22,7 +22,19 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+    	</dependency>
+
+	<!-- Spring Boot Actuator 监控端点 -->
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+    	    <artifactId>spring-boot-starter-actuator</artifactId>
+	</dependency>
+
+	<!-- Prometheus指标格式支持 -->
+	<dependency>
+	    <groupId>io.micrometer</groupId>
+	    <artifactId>micrometer-registry-prometheus</artifactId>
+	</dependency>
     </dependencies>
     
     <build>
